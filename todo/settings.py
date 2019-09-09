@@ -116,3 +116,9 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static")
 ]
+
+NOTEBOOK_ARGUMENTS = [
+    '--ip=0.0.0.0',
+    '--port=8888',
+    '--no-browser',
+]

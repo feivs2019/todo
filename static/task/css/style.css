@@ -1,0 +1,284 @@
+/* ----------------------------------
+    width 640 〜
+---------------------------------- */
+/* common -------------*/
+body {
+    width: 100%;
+    height: 100%;
+    font-family: 'Avenir','Helvetica Neue','Helvetica','Arial','Hiragino Sans','ヒラギノ角ゴシック',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic';
+    /* 
+    background-image: url("/static/task/image/background.jpg");
+    background-size: cover;
+    */
+}
+.linkbtn {
+    display: inline-block;
+    padding: 0.3em 1em;
+    text-decoration: none;
+    color: #67c5ff;
+    border: solid 2px #67c5ff;
+    border-radius: 3px;
+    transition: .4s;
+    font-size: 16px;
+}
+.linkbtn:hover {
+    background: #67c5ff;
+    color: white;
+    cursor: pointer;
+}
+.linkbtn.post_submit {
+    color: #ff4d4d;
+    border: solid 2px #ff4d4d;
+}
+.linkbtn.post_submit:hover {
+    background: #ff4d4d;
+    color: white;
+    cursor: pointer;
+}
+.form-task {
+	display: inline-block;
+	vertical-align:  middle;
+	color: #495057;
+	background-color: #fff;
+	background-clip: padding-box;
+	border: 1px solid #ced4da;
+	border-radius: .25rem;
+	transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out
+}
+
+/* header -------------*/
+header {
+    height: 20%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+header .navigater {
+    width: 30%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    -webkit-align-items: center;
+    align-items: center
+}
+.navigater .item {
+    width: 25%;
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+    margin: 10px;
+    font-size: 16px;
+}
+#title.navigater .item {
+    width: 100%;
+    font-size: 30px;
+}
+
+/* contents -------------*/
+.contents {
+    height: 70%;
+    display: grid;
+    grid-auto-rows: 25%;
+    grid-auto-columns: 80%;
+    justify-content: center;
+    overflow: auto;
+}
+.contents .taskblock {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: auto;
+    background-color: rgba(0, 0, 255, 0.45);
+    margin: 1%;
+    box-shadow: 2px 2px 4px gray;
+}
+.taskblock .item {
+    margin: 1%;
+}
+.taskblock #task.item {
+    grid-column: 1/4; 
+    grid-row: 1/2;
+}
+.taskblock #author.item {
+    grid-column: 1/2; 
+    grid-row: 2/3;
+    text-align: center;
+}
+.taskblock #status.item {
+    grid-column: 2/3; 
+    grid-row: 2/3;
+    text-align: center;
+}
+.taskblock #delbtn.item {
+    grid-column: 3/4;
+    grid-row: 2/3;
+    text-align: center;
+}
+.user {
+    display: inline-block;
+    text-decoration: none;
+    color: white;
+    border-radius: 50%;
+    border: solid 2px #668ad8;
+    text-align: center;
+    overflow: hidden;
+    font-weight: bold;
+    transition: .2s;
+    padding: 8px;
+}
+.user:hover {
+    color: white;
+    background: #668ad8;
+    cursor: pointer;
+}
+#nobody.user {
+    border: solid 2px #d86666;
+}
+#nobody.user:hover {
+    color: white;
+    background: #d86666;
+    cursor: pointer;
+}
+#taskbtn.linkbtn {
+    color: #ff6767;
+    transition: .2s;
+    border: 0px;
+    font-size: 20px;
+}
+#taskbtn.linkbtn:hover {
+    background: #ff6767;
+    color: white;
+}
+.status {
+    width: 60%;
+    position: relative;
+    display: inline-block;
+    padding: 0.25em 0.5em;
+    text-decoration: none;
+    color: #FFF;
+    background: #fd9535;/*色*/
+    border: solid 2px #d27d00;/*線色*/
+    border-radius: 4px;/*角の丸み*/
+    box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), inset 0 -2px 0 rgba(0, 0, 0, 0.05);
+    transition: .2s;
+    font-weight: bold;
+}
+.status:hover {
+    background: #35fd50a4;/*色*/
+    border: solid 2px #00a700;/*線色*/
+    cursor: pointer;
+}
+#complete.status {
+    background: #35fd50;/*色*/
+    border: solid 2px #00a700;/*線色*/
+}
+#complete.status:hover {
+    background: #fd9635ad;/*色*/
+    border: solid 2px #d27d00;/*線色*/
+}
+
+/* footer -------------*/
+footer {
+    height: 10%;
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    justify-content: center;
+    align-items: center;
+    padding: 1%;
+}
+footer .snslink {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    -webkit-align-items: center;
+    align-items: center
+}
+.btn-social-square {
+    display: inline-block;
+    text-decoration: none;
+    width: 50px;
+    margin:2px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 23px;
+    color:white;
+    border-radius: 12px;
+    text-align: center;
+    overflow: hidden;
+    font-weight: bold;
+    transition: .3s;
+  }
+.btn-social-square i {
+    line-height:50px;
+}
+.btn-social-square:hover {
+    -webkit-transform: translateY(-5px);
+    transform: translateY(-5px);
+}
+.btn-social-square--twitter {
+    background: #22b8ff;
+}
+.btn-social-square--facebook {
+    background: #6680d8;
+}
+.btn-social-square--hatebu {
+    background: #49a8fb;
+}
+.btn-social-square--pocket {
+    background: #ff6d82;
+}
+.btn-social-square--feedly {
+    background: #7bda72;
+}
+
+/* modal -------------*/
+.modal {
+    display: none;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+.modal__bg {
+    background: rgba(0, 0, 0, 0.8);
+    height: 100%;
+    position: absolute;
+    width: 100%;
+}
+.modal__content {
+    background: white;
+    left: 50%;
+    top: 50%;
+    width: 60%;
+    height: 30%;
+    padding: 40px;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: auto;
+    grid-auto-flow: column;
+    text-align: center;
+}
+.modal__content a.linkbtn {
+    margin: 10% 20% 10% 20%;
+    text-align: center;
+}
+.modal__content p {
+    grid-column: 1/3;
+    font-size: 14px;
+}
+.modal__content a.linkbtn.js-modal-create-close{
+    grid-column: 1/2;
+    grid-row: 3/4;
+}
+.modal__content a.linkbtn.post_submit{
+    grid-column: 2/3;
+    grid-row: 3/4;
+}
+
+  /* ----------------------------------
+    width 〜 640
+---------------------------------- */
+/* header */
+/* contents */
+/* footer */

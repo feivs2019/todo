@@ -1,0 +1,35 @@
+{% extends 'task/base.html' %}
+
+{% block content %}
+    {% for data in model %}
+        <div class="taskblock">
+            <span class="item" id="task">{{ data.task }}</span>
+            <span class="item" id="author">
+                {% if data.author %}
+                    {% for user in data.author %}
+                            <span class="user">{{ user }}</span>
+                    {% endfor %}
+                {% else %}
+                    <span class="user" id="nobody">nobody</span>
+                {% endif %}
+            </span>
+            <span class="item" id="status">
+                {% if data.status == 0 %}
+                    <span class="status" id="incomplete">incomplete</span>
+                {% elif data.status == 1 %}
+                    <span class="status" id="complete">complete</span>
+                {% endif %}
+            </span>
+            <span class="item" id="delbtn"><i class="linkbtn fas fa-trash-alt" id="taskbtn" type="submit"></i></span>
+        </div>
+    {% endfor %}
+    <!-- modal -->
+    <div class="modal js-modal-create">
+        <div class="modal__bg js-modal-create-close"></div>
+        <div class="modal__content">
+            {{ form.as_p }}
+            <a class="linkbtn js-modal-create-close" href="">キャンセル</a>
+            <a class="linkbtn post_submit" href="">作成</a>
+        </div><!-- modal__inner -->
+    </div><!-- modal -->
+{% endblock %}
