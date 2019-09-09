@@ -6,13 +6,10 @@ body {
     width: 100%;
     height: 100%;
     font-family: 'Avenir','Helvetica Neue','Helvetica','Arial','Hiragino Sans','ヒラギノ角ゴシック',YuGothic,'Yu Gothic','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic';
-    /* 
     background-image: url("/static/task/image/background.jpg");
-    background-size: cover;
-    */
 }
 .linkbtn {
-    display: inline-block;
+    display: flex;
     padding: 0.3em 1em;
     text-decoration: none;
     color: #67c5ff;
@@ -20,6 +17,8 @@ body {
     border-radius: 3px;
     transition: .4s;
     font-size: 16px;
+    align-items: center;
+    justify-content: center;
 }
 .linkbtn:hover {
     background: #67c5ff;
@@ -41,9 +40,9 @@ body {
 	color: #495057;
 	background-color: #fff;
 	background-clip: padding-box;
-	border: 1px solid #ced4da;
 	border-radius: .25rem;
-	transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out
+	transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    border: 1px solid #ced4da;
 }
 
 /* header -------------*/
@@ -78,7 +77,7 @@ header .navigater {
 .contents {
     height: 70%;
     display: grid;
-    grid-auto-rows: 25%;
+    grid-auto-rows: minmax(140px, 25%);
     grid-auto-columns: 80%;
     justify-content: center;
     overflow: auto;
@@ -87,7 +86,7 @@ header .navigater {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-auto-rows: auto;
-    background-color: rgba(0, 0, 255, 0.45);
+    background-color: rgba(0, 0, 255, 0.15);
     margin: 1%;
     box-shadow: 2px 2px 4px gray;
 }
@@ -118,7 +117,7 @@ header .navigater {
     text-decoration: none;
     color: white;
     border-radius: 50%;
-    border: solid 2px #668ad8;
+    border: solid 2px rgb(80, 80, 255);
     text-align: center;
     overflow: hidden;
     font-weight: bold;
@@ -259,7 +258,26 @@ footer .snslink {
     grid-auto-flow: column;
     text-align: center;
 }
-.modal__content a.linkbtn {
+.modal__content input {
+    width: 80%;
+    padding: 20px;
+    font-size: 20px;
+}
+.modal__content label {
+    position: absolute;
+    font-size: 20px;
+    right: 75%;
+    margin: 20px;
+    padding: 0 10px;
+    -webkit-transition: all 0.15s ease-in 0s;
+    transition: all 0.15s ease-in 0s;
+}
+label.active {
+    right: 87%;
+    font-size: 15px;
+    font-style: italic;
+}
+.modal__content .linkbtn {
     margin: 10% 20% 10% 20%;
     text-align: center;
 }
@@ -267,14 +285,15 @@ footer .snslink {
     grid-column: 1/3;
     font-size: 14px;
 }
-.modal__content a.linkbtn.js-modal-create-close{
+.modal__content .linkbtn.js-modal-create-close{
     grid-column: 1/2;
     grid-row: 3/4;
 }
-.modal__content a.linkbtn.post_submit{
+.modal__content .linkbtn.post_submit{
     grid-column: 2/3;
     grid-row: 3/4;
 }
+
 
   /* ----------------------------------
     width 〜 640

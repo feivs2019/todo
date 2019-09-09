@@ -27,7 +27,7 @@ class BaseView(generic.ListView):
 
 '''===================================================
     TaskHomeViewクラス
-        urlマップ: 'todo:home'
+        urlマップ: 'task:home'
         method: GET
 ==================================================='''
 class TaskHomeView(BaseView, generic.ListView):
@@ -47,11 +47,11 @@ class TaskHomeView(BaseView, generic.ListView):
 
 '''===================================================
     TaskCreateViewクラス
-        urlマップ: 'todo:task_create'
+        urlマップ: 'task:create'
         method: GET, POST
 ==================================================='''
 class TaskCreateView(LoginRequiredMixin, BaseView, generic.CreateView):
-    namespace = 'task_create'
+    namespace = 'create'
 
     def get_context_data(self, **kwargs):
         super().get_context_data(**kwargs)
@@ -60,28 +60,28 @@ class TaskCreateView(LoginRequiredMixin, BaseView, generic.CreateView):
 
 '''===================================================
     TaskUpdateViewクラス
-        urlマップ: 'todo:task_update'
+        urlマップ: 'task:update'
         method: GET, POST
 ==================================================='''
 class TaskUpdateView(LoginRequiredMixin, BaseView, generic.UpdateView):
-    namespace = 'task_update'
+    namespace = 'update'
     form = TaskForm()
 
 
 '''===================================================
     TaskDeleteViewクラス
-        urlマップ: 'todo:task_delete'
+        urlマップ: 'task:delete'
         method: GET, POST
 ==================================================='''
 class TaskDeleteView(LoginRequiredMixin, BaseView, generic.DeleteView):
-    namespace = 'task_delete'
+    namespace = 'delete'
     template_name = 'delete.html'
 
 
 '''===================================================
     TaskDetailViewクラス
-        urlマップ: 'todo:task_detail'
+        urlマップ: 'task:detail'
         method: GET
 ==================================================='''
 class TaskDetailView(BaseView, generic.DetailView):
-    namespace = 'task_detail'
+    namespace = 'detail'

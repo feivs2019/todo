@@ -26,10 +26,12 @@
     <!-- modal -->
     <div class="modal js-modal-create">
         <div class="modal__bg js-modal-create-close"></div>
-        <div class="modal__content">
-            {{ form.as_p }}
-            <a class="linkbtn js-modal-create-close" href="">キャンセル</a>
-            <a class="linkbtn post_submit" href="">作成</a>
-        </div><!-- modal__inner -->
+        <form method="POST" action="{% url 'task:create' %}">
+            <div class="modal__content">
+                {{ form.as_p }}
+                <a class="linkbtn js-modal-create-close" href="">キャンセル</a>
+                <input class="linkbtn post_submit" type="submit" value="作成"></a>
+            </div><!-- modal__inner -->
+        </form>
     </div><!-- modal -->
 {% endblock %}
