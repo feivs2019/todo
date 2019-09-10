@@ -86,7 +86,7 @@ header .navigater {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-auto-rows: auto;
-    background-color: rgba(0, 0, 255, 0.15);
+    background-color: rgba(0, 0, 255, 0.25);
     margin: 1%;
     box-shadow: 2px 2px 4px gray;
 }
@@ -248,7 +248,7 @@ footer .snslink {
     left: 50%;
     top: 50%;
     width: 60%;
-    height: 30%;
+    height: 60%;
     padding: 40px;
     position: absolute;
     transform: translate(-50%,-50%);

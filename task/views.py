@@ -3,6 +3,7 @@ from django.views import generic
 from .models import *
 from .forms import *
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.urls import reverse_lazy
 
 # Create your views here.
 '''===================================================
@@ -50,8 +51,11 @@ class TaskHomeView(BaseView, generic.ListView):
         urlマップ: 'task:create'
         method: GET, POST
 ==================================================='''
-class TaskCreateView(LoginRequiredMixin, BaseView, generic.CreateView):
+# class TaskCreateView(LoginRequiredMixin, BaseView, generic.CreateView):
+class TaskCreateView(BaseView, generic.CreateView):
     namespace = 'create'
+    form_class = TaskForm
+    success_url = reverse_lazy('task:home')
 
     def get_context_data(self, **kwargs):
         super().get_context_data(**kwargs)
