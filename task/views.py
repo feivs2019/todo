@@ -5,7 +5,32 @@ from .forms import *
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 
-# Create your views here.
+#
+#  関数ベースビュー
+#
+def update_status(request):
+    import json
+    from django.http import HttpResponse,Http404
+
+    if request.method == 'POST':
+        task_id = request.POST['id']
+        data = {
+            'status': request.POST['status'],
+            'id': task_id,
+        }
+
+        Task.objects.filter(id=task_id).update(**data)
+        response = json.dumps(data)
+
+        return HttpResponse(response,content_type="application/json")
+
+    else:
+        raise Http404
+
+
+#
+#  クラスベースビュー
+#
 '''===================================================
     BaseViewクラス
         urlマップ: なし

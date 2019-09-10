@@ -162,17 +162,11 @@ header .navigater {
     font-weight: bold;
 }
 .status:hover {
-    background: #35fd50a4;/*色*/
-    border: solid 2px #00a700;/*線色*/
     cursor: pointer;
 }
-#complete.status {
+.status.complete {
     background: #35fd50;/*色*/
     border: solid 2px #00a700;/*線色*/
-}
-#complete.status:hover {
-    background: #fd9635ad;/*色*/
-    border: solid 2px #d27d00;/*線色*/
 }
 
 /* footer -------------*/

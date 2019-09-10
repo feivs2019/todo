@@ -2,7 +2,7 @@
 
 {% block content %}
     {% for data in model %}
-        <div class="taskblock">
+        <div class="taskblock" id="{{ data.id }}">
             <span class="item" id="task">{{ data.task }}</span>
             <span class="item" id="author">
                 {% if data.author %}
@@ -14,11 +14,15 @@
                 {% endif %}
             </span>
             <span class="item" id="status">
-                {% if data.status == 0 %}
-                    <span class="status" id="incomplete">incomplete</span>
-                {% elif data.status == 1 %}
-                    <span class="status" id="complete">complete</span>
-                {% endif %}
+                <form id="{{ data.id }}" method="POST" action="{% url 'task:update_status' %}">
+                    {% csrf_token %}
+                    <input type="hidden" id="status" value="{{ data.status }}">
+                    {% if data.status == 0 %}
+                        <span class="status incomplete" id="{{ data.id }}">incomplete</span>
+                    {% elif data.status == 1 %}
+                        <span class="status complete" id="{{ data.id }}">complete</span>
+                    {% endif %}
+                </form>
             </span>
             <span class="item" id="delbtn"><i class="linkbtn fas fa-trash-alt" id="taskbtn" type="submit"></i></span>
         </div>
