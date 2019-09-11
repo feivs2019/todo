@@ -47,10 +47,11 @@ body {
 
 /* header -------------*/
 header {
-    height: 20%;
+    height: 30%;
     display: flex;
     flex-direction: row;
     justify-content: center;
+    margin: 1%;
 }
 header .navigater {
     width: 30%;
@@ -75,7 +76,9 @@ header .navigater {
 
 /* contents -------------*/
 .contents {
-    height: 70%;
+    height: 73%;
+    margin: 1%;
+    position: absolute;
     display: grid;
     grid-auto-rows: minmax(140px, 25%);
     grid-auto-columns: 80%;
@@ -177,11 +180,15 @@ header .navigater {
 /* footer -------------*/
 footer {
     height: 10%;
+    width: 100%;
+    bottom: 0%;
+    margin: 1%;
     display: grid;
     grid-template-columns: repeat(2, 50%);
     justify-content: center;
     align-items: center;
     padding: 1%;
+    position: absolute;
 }
 footer .snslink {
     display: flex;
