@@ -89,6 +89,11 @@ header .navigater {
     background-color: rgba(0, 0, 255, 0.25);
     margin: 1%;
     box-shadow: 2px 2px 4px gray;
+    transition: 0.2s;
+    opacity: 1.0;
+}
+.contents .taskblock.fadeout {
+    opacity: 0.0;
 }
 .taskblock .item {
     margin: 1%;
@@ -137,13 +142,13 @@ header .navigater {
     background: #d86666;
     cursor: pointer;
 }
-#taskbtn.linkbtn {
+#delbtn.linkbtn {
     color: #ff6767;
     transition: .2s;
     border: 0px;
     font-size: 20px;
 }
-#taskbtn.linkbtn:hover {
+#delbtn.linkbtn:hover {
     background: #ff6767;
     color: white;
 }
@@ -288,7 +293,21 @@ label.active {
     grid-row: 3/4;
 }
 
-
+.modal__message{
+    background: rgb(255, 100, 100);
+    color: white;
+    left: 50%;
+    top: 3%;
+    width: 20%;
+    height: 30px;
+    padding: 10px;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    text-align: center;
+    display: block;
+    align-items: center;
+    opacity: 0.8;
+}
   /* ----------------------------------
     width 〜 640
 ---------------------------------- */

@@ -1,3 +1,31 @@
+// ------------------------------------------- //
+// ユーティリティ
+// ------------------------------------------- //
+// 関数遅延実行
+function sleep(waitSec, callbackFunc) {
+    var spanedSec = 0;
+    var id = setInterval(function () {
+        spanedSec++;
+        if (spanedSec >= waitSec) {
+            clearInterval(id);
+            if (callbackFunc) callbackFunc();
+        }
+    }, 1000);
+}
+// モーダルメッセージ
+function modal_message(message){
+    document.getElementById("result_message").innerHTML = message;
+    $('.js-modal-message').fadeIn();
+    sleep(2,function(){
+        $('.js-modal-message').fadeOut();
+    });
+    $('.modal__message').find('.message').text('');
+    return false;
+}
+
+// ------------------------------------------- //
+// 画面操作
+// ------------------------------------------- //
 //モーダル画面の切替
 $(function(){
     $('.js-modal-create-open').on('click',function(){
@@ -12,6 +40,7 @@ $(function(){
     });
 });
 
+
 //登録フォームのラベル移動
 $(function(){
     $('input').on('focusin', function() {
@@ -23,13 +52,14 @@ $(function(){
     });
 });
 
-//ステータスボタン押下でajax処理（ステータス更新）
+// ajax処理
 $(function(){
+    // ステータスの更新
     $('span.status').on('click', function(){
         var status = $(this).parent().find('input#status').attr('value') == "0" ? 1 : 0 ;
         var status_after_string = status == 0 ? 'incomplete' : 'complete' ;
         var status_before_string = status == 0 ? 'complete' : 'incomplete' ;
-        var id = $(this).parent().attr('id');
+        var id = $(this).parent().attr('id').slice(1);
         $.ajax({
             'url': $(this).parent().attr('action'),
             'type': 'POST',
@@ -42,14 +72,40 @@ $(function(){
         })
         .then(
                 function(data){
-                    $('.status#' + id).html(status_after_string);
-                    $('.status#' + id).attr('class', 'status ' + status_after_string);
-                    $('form#' + id).find('input#status').attr('value', status)
+                    $('.status.'+ status_before_string +'#' + id).html(status_after_string);
+                    $('.status.'+ status_before_string +'#' + id).attr('class', 'status ' + status_after_string);
+                    $('form#i' + id).find('input#status').attr('value', data['status'])
                 },
                 function(){
-                    $('.status#' + id).html(status_after_string);
-                    $('.status#' + id).attr('class', 'status ' + status_after_string);
-                    $('form#' + id).find('input#status').attr('value', status)
+                    $('.status.'+ status_before_string +'#' + id).html(status_after_string);
+                    $('.status.'+ status_before_string +'#' + id).attr('class', 'status ' + status_after_string);
+                    $('form#i' + id).find('input#status').attr('value', data['status'])
+                }
+        );
+    });
+
+    // タスクの削除
+    $('i#delbtn').on('click', function(){
+        var id = $(this).parent().attr('id');
+        $.ajax({
+            'url': $(this).parent().attr('action'),
+            'type': 'POST',
+            'data':{
+                'csrfmiddlewaretoken' : $(this).parent().find('input').attr('value'),
+                'id': id,
+            },
+            'datatype': 'json',
+        })
+        .then(
+                function(data){
+                    $('#i' + id + '.taskblock').addClass('fadeout');
+                    sleep(1, function(){
+                        $('#i' + id + '.taskblock').remove();
+                    });
+                    modal_message("Task was deleted.")
+                },
+                function(){
+                    modal_message("Can't delete Task.")
                 }
         );
     });

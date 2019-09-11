@@ -2,7 +2,7 @@
 
 {% block content %}
     {% for data in model %}
-        <div class="taskblock" id="{{ data.id }}">
+        <div class="taskblock" id="i{{ data.id }}">
             <span class="item" id="task">{{ data.task }}</span>
             <span class="item" id="author">
                 {% if data.author %}
@@ -14,7 +14,7 @@
                 {% endif %}
             </span>
             <span class="item" id="status">
-                <form id="{{ data.id }}" method="POST" action="{% url 'task:update_status' %}">
+                <form id="i{{ data.id }}" method="POST" action="{% url 'task:update_status' %}">
                     {% csrf_token %}
                     <input type="hidden" id="status" value="{{ data.status }}">
                     {% if data.status == 0 %}
@@ -24,7 +24,13 @@
                     {% endif %}
                 </form>
             </span>
-            <span class="item" id="delbtn"><i class="linkbtn fas fa-trash-alt" id="taskbtn" type="submit"></i></span>
+
+            <span class="item" id="delbtn">
+                <form id="{{ data.id }}" method="POST" action="{% url 'task:delete' %}">
+                    {% csrf_token %}
+                    <i class="linkbtn fas fa-trash-alt" id="delbtn" type="submit"></i>
+                </form>
+            </span>
         </div>
     {% endfor %}
     <!-- modal -->
@@ -38,5 +44,11 @@
                 <a class="linkbtn post_submit" href="javascript:create_form.submit()" >作成</a>
             </div><!-- modal__inner -->
         </form>
-    </div><!-- modal -->
+    </div>
+    <div class="modal js-modal-message">
+        <div class="modal__message">
+            <span id="result_message"></span>
+        </div><!-- modal__inner -->
+    </div>
+    <!-- modal -->
 {% endblock %}
