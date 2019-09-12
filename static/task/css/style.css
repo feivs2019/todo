@@ -77,6 +77,7 @@ header .navigater {
 /* contents -------------*/
 .contents {
     height: 73%;
+    width: 100%;
     margin: 1%;
     position: absolute;
     display: grid;

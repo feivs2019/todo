@@ -1,8 +1,9 @@
 {% extends 'task/base.html' %}
 
 {% block content %}
+    <div id='movement'>
     {% for data in model %}
-        <div class="taskblock" id="i{{ data.id }}">
+        <div class="taskblock" id="i{{ data.id }}" >
             <span class="item" id="task">{{ data.task }}</span>
             <span class="item" id="author">
                 {% if data.author %}
@@ -33,6 +34,7 @@
             </span>
         </div>
     {% endfor %}
+    </div>
     <!-- modal -->
     <div class="modal js-modal-create">
         <div class="modal__bg js-modal-create-close"></div>

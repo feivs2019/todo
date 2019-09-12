@@ -1,6 +1,7 @@
 // ------------------------------------------- //
 // ユーティリティ
 // ------------------------------------------- //
+
 // 関数遅延実行
 function sleep(waitSec, callbackFunc) {
     var spanedSec = 0;
@@ -16,7 +17,7 @@ function sleep(waitSec, callbackFunc) {
 function modal_message(message){
     document.getElementById("result_message").innerHTML = message;
     $('.js-modal-message').fadeIn();
-    sleep(2,function(){
+    sleep(1,function(){
         $('.js-modal-message').fadeOut();
     });
     $('.modal__message').find('.message').text('');
@@ -26,7 +27,16 @@ function modal_message(message){
 // ------------------------------------------- //
 // 画面操作
 // ------------------------------------------- //
-//モーダル画面の切替
+// タスクのドラッグ＆ドロップ
+$(function(){
+    Sortable.create(movement, {
+        group: "hoge",
+        handle: ".taskblock",
+        animation: 200
+    });
+});
+
+// モーダル画面の切替
 $(function(){
     $('.js-modal-create-open').on('click',function(){
         $('.js-modal-create').fadeIn();
@@ -41,7 +51,7 @@ $(function(){
 });
 
 
-//登録フォームのラベル移動
+// 登録フォームのラベル移動
 $(function(){
     $('input').on('focusin', function() {
     $(this).parent().find('label').addClass('active');
